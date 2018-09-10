@@ -5,9 +5,6 @@ const wrap = require('../../../middlewares/wrap');
 
 const router = express.Router();
 
-let BITBOXCli = require('bitbox-cli/lib/bitbox-cli').default;
-let BITBOX = new BITBOXCli();
-
 router.get('/', wrap(async (req, res) => {
   let blockHeight = await axios.get('https://rest.bitcoin.com/v1/blockchain/getBlockCount')
     .then(result => {
@@ -25,10 +22,12 @@ router.get('/', wrap(async (req, res) => {
         nonce: result.data.nonce,
         bits: result.data.bits
       };
+    })
+    .catch(err => {
+      return err;
     });
-    
-    
-  res.json({
+
+  res.status(200).json({
     blockHeight: blockHeight,
     blockData: blockData
   });

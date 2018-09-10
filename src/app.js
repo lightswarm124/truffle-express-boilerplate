@@ -4,7 +4,7 @@ const helmet = require('helmet');
 
 require('dotenv').config();
 
-const middlewares = require('./middlewares');
+const middlewares = require('../middlewares/middlewares');
 const api = require('./api');
 
 const app = express();
@@ -24,4 +24,3 @@ app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
 module.exports = app;
-
