@@ -28,11 +28,5 @@ module.exports = async () => {
     ebn: blockHeight + 1
   }
 
-  return jwt.sign(payload, cert, { algorithm: 'HS256', noTimestamp: true }, function(err, token) {
-    if (!err) {
-      console.log(token);
-    } else {
-      console.log(err);
-    }
-  });
+  return await jwt.sign(payload, cert, { algorithm: 'HS256', noTimestamp: true });
 }
