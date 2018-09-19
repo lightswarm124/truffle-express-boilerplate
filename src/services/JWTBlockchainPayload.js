@@ -5,7 +5,7 @@ const wrap = require('../../middlewares/wrap');
 
 const cert = 'bitcoincash:qz8wl7reul0z8sxp9h7hyxduhq6cvfllksltczkkgp';
 
-module.exports = async () => {
+module.exports = async (expirationBlock) => {
   let blockHeight = await axios.get('https://rest.bitcoin.com/v1/blockchain/getBlockCount')
     .then(result => {
       return result.data;
@@ -25,8 +25,8 @@ module.exports = async () => {
   let payload = await {
     bkh: blockHeight,
     mkr: merkleRoot,
-    ebn: blockHeight + 1
-  }
+    ebn: blockHeight + expirationBlock
+  };
 
   return await jwt.sign(payload, cert, { algorithm: 'HS256', noTimestamp: true });
-}
+};

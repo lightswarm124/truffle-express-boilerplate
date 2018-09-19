@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const axios = require('axios');
+const bodyParser = require("body-parser");
 
 require('dotenv').config();
 
@@ -11,6 +12,8 @@ const api = require('./api');
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(helmet());
 
@@ -32,5 +35,11 @@ app.use('/api/v1', api);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
+
+// Testing JWT login
+app.post('/login', wrap(async (req, res) => {
+  let { user, password } = req.body;
+  
+}));
 
 module.exports = app;
