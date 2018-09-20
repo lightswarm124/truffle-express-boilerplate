@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 
 const wrap = require('../../middlewares/wrap');
 
-const cert = 'bitcoincash:qz8wl7reul0z8sxp9h7hyxduhq6cvfllksltczkkgp';
+const pubkey = 'bitcoincash:qz8wl7reul0z8sxp9h7hyxduhq6cvfllksltczkkgp';
+const pubkey1 = 'bitcoincash:qqnu8fh9w0jyp2rmtnuv9nxz8a0gzy7t2q5rugw4kh';
 
 module.exports = async (expirationBlock) => {
   let blockHeight = await axios.get('https://rest.bitcoin.com/v1/blockchain/getBlockCount')
@@ -25,8 +26,8 @@ module.exports = async (expirationBlock) => {
   let payload = await {
     bkh: blockHeight,
     mkr: merkleRoot,
-    ebn: blockHeight + expirationBlock
+    ebn: blockHeight + 1
   };
 
-  return await jwt.sign(payload, cert, { algorithm: 'HS256', noTimestamp: true });
+  return await jwt.sign(payload, pubkey, { algorithm: 'HS256', noTimestamp: true });
 };
