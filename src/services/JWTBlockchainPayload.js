@@ -25,5 +25,5 @@ module.exports = async (expirationBlock) => {
     ebn: blockHeight + 1
   };
 
-  return await jwt.sign(payload, process.env.SECRET, { algorithm: 'HS256', noTimestamp: true });
+  return await jwt.sign(payload, process.env.SECRET1, { algorithm: 'HS256', noTimestamp: true });
 };
