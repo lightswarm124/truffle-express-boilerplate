@@ -1,8 +1,6 @@
 const axios = require('axios');
 const jwt = require('jsonwebtoken');
 
-const wrap = require('../../middlewares/wrap');
-
 const pubkey = 'bitcoincash:qz8wl7reul0z8sxp9h7hyxduhq6cvfllksltczkkgp';
 const pubkey1 = 'bitcoincash:qqnu8fh9w0jyp2rmtnuv9nxz8a0gzy7t2q5rugw4kh';
 
