@@ -1,10 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const axios = require('axios');
-const bodyParser = require("body-parser");
-
-require('dotenv').config();
+const bodyParser = require('body-parser');
 
 const middlewares = require('../middlewares/middlewares');
 const wrap = require('../middlewares/wrap');
@@ -39,7 +38,7 @@ app.use(middlewares.errorHandler);
 // Testing JWT login
 app.post('/login', wrap(async (req, res) => {
   let { user, password } = req.body;
-  
+
 }));
 
 module.exports = app;

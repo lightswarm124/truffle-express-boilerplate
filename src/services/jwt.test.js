@@ -1,12 +1,11 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const request = require('supertest');
 const axios = require('axios');
 
 let jwtTest = require('./JWTBlockchainPayload');
 
-const pubkey = 'bitcoincash:qz8wl7reul0z8sxp9h7hyxduhq6cvfllksltczkkgp';
-const pubkey1 = 'bitcoincash:qqnu8fh9w0jyp2rmtnuv9nxz8a0gzy7t2q5rugw4kh';
-let validation = '';
+let validation;
 
 /*
 async function testJWTToken() {
@@ -41,7 +40,7 @@ async function testAuthentication() {
 
   if (JWTbkh === blockHeight && JWTebn > blockHeight) {
     try {
-      let validation = jwt.verify(signedData, pubkey, { ignoreExpiration: true });
+      let validation = jwt.verify(signedData, process.env.SECRET, { ignoreExpiration: true });
       console.log('Signature Authentication Successful');
     } catch (err) {
       console.log('Incorrect Signature Authentication');

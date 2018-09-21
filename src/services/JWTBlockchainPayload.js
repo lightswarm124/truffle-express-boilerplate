@@ -1,8 +1,6 @@
+require('dotenv').config();
 const axios = require('axios');
 const jwt = require('jsonwebtoken');
-
-const pubkey = 'bitcoincash:qz8wl7reul0z8sxp9h7hyxduhq6cvfllksltczkkgp';
-const pubkey1 = 'bitcoincash:qqnu8fh9w0jyp2rmtnuv9nxz8a0gzy7t2q5rugw4kh';
 
 module.exports = async (expirationBlock) => {
   let blockHeight = await axios.get('https://rest.bitcoin.com/v1/blockchain/getBlockCount')
@@ -27,5 +25,5 @@ module.exports = async (expirationBlock) => {
     ebn: blockHeight + 1
   };
 
-  return await jwt.sign(payload, pubkey, { algorithm: 'HS256', noTimestamp: true });
+  return await jwt.sign(payload, process.env.SECRET, { algorithm: 'HS256', noTimestamp: true });
 };
