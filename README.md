@@ -1,9 +1,6 @@
 # BlockOTP
 BlockOTP is a Blockchain-Based One-Time Password Setup Using Newly Minted Blocks and Json Web Tokens
 
-## Table of Contents
-
-
 ## Overview
 
 * Blockchain Height Data Encoded in JWT Format
