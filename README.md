@@ -1,4 +1,4 @@
-# blockOTP
+# BlockOTP
 
 Blockchain-based One-Time Password:
 
