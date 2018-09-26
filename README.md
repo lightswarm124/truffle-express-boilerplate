@@ -1,6 +1,6 @@
 # BlockOTP
 
-Blockchain-based One-Time Password:
+Blockchain-Based One-Time Password:
 
 * Blockchain Height Data Encoded in JWT Format
   * Authentication token expires after block height + (N) blocks
@@ -8,8 +8,8 @@ Blockchain-based One-Time Password:
 * Blockchain Desync Guard with Transaction Merkle Root
   * Merkle root data of block height pulled from https://rest.bitcoin.com
   
-* Payload Structured as Current Block Height, Merkle Root Hash, and Expiry Block Height
-  * Header and payload details Auth token expiration time in reference to blockchain data
+* JWT Payload Details Auth Token Expiration Via New Block Heights
+  * Token initialized through current block height && merkle root, expiring at a future block height
 
 ## Setup
 
