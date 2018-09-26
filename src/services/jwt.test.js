@@ -5,6 +5,7 @@ const axios = require('axios');
 
 let jwtTest = require('./JWTBlockchainPayload');
 
+
 async function testAuthentication() {
   let validation;
   let blockHeight = await axios.get('https://rest.bitcoin.com/v1/blockchain/getBlockCount')

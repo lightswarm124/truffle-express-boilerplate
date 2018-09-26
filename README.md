@@ -1,15 +1,22 @@
 # BlockOTP
+BlockOTP is a Blockchain-Based One-Time Password Setup Using Newly Minted Blocks and Json Web Tokens
 
-Blockchain-Based One-Time Password:
+## Table of Contents
+
+
+## Overview
 
 * Blockchain Height Data Encoded in JWT Format
   * Authentication token expires after block height + (N) blocks
 
 * Blockchain Desync Guard with Transaction Merkle Root
   * Merkle root data of block height pulled from https://rest.bitcoin.com
-  
+
 * JWT Payload Details Auth Token Expiration Via New Block Heights
   * Token initialized through current block height && merkle root, expiring at a future block height
+
+## Environment Configuration
+Env data currently stores the secrets for the signature. Currently, any secret works for the signing
 
 ## Setup
 
@@ -52,3 +59,7 @@ npm run audit ( OR ) yarn audit
 ```
 npm run test ( OR ) yarn test
 ```
+
+## Something Missing?
+
+If you have ideas for more “How To” recipes that should be on this page, [let us know](https://github.com/facebookincubator/create-react-app/issues) or [contribute some!](https://github.com/facebookincubator/create-react-app/edit/master/packages/react-scripts/template/README.md)
