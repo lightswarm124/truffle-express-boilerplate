@@ -5,6 +5,11 @@ Blockchain-based One-Time Password:
 * Blockchain Height Data Encoded in JWT Format
   * Authentication token expires after block height + (N) blocks
 
+* Blockchain Desync Guard with Transaction Merkle Root
+  * Merkle root data of block height pulled from https://rest.bitcoin.com
+  
+* Payload Structured as Current Block Height, Merkle Root Hash, and Expiry Block Height
+  * Header and payload details Auth token expiration time in reference to blockchain data
 
 ## Setup
 
@@ -19,7 +24,7 @@ npm run start ( OR ) yarn start
 ```
 
 ## Development
-
+Currently developing on JWT responses
 ```
 npm run dev ( OR ) yarn dev
 ```
