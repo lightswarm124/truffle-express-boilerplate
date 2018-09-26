@@ -1,36 +1,27 @@
-"use strict";
 require('dotenv').config();
 
-import axios from axios;
-import jwt from jsonwebtoken;
+const axios = require('axios');
+const jwt = require('jsonwebtoken');
+//const wrap = require('../../middlewares/wrap');
 
-class jwtPayload {
-  constructor() {
-    this.currentBlockHeight;
-    this.txMerkleRoot;
-    this.expiryBlockHeight;
-  }
-}
-let blockHeight = await axios.get('https://rest.bitcoin.com/v1/blockchain/getBlockCount')
-  .then(result => {
+module.exports = async function (expirationBlock) {
+  let blockHeight = await axios.get('https://rest.bitcoin.com/v1/blockchain/getBlockCount').then(function (result) {
     return result.data;
-  })
-  .catch(err => {
+  }).catch(function (err) {
     return err;
   });
-
-let merkleRoot = await axios.get(`https://rest.bitcoin.com/v1/block/details/${blockHeight}`)
-  .then(result => {
+  let merkleRoot = await axios.get(`https://rest.bitcoin.com/v1/block/details/${blockHeight}`).then(function (result) {
     return result.data.merkleroot;
-  })
-  .catch(err => {
+  }).catch(function (err) {
     return err;
   });
-
-let payload = await {
-  bkh: blockHeight,
-  mkr: merkleRoot,
-  ebn: blockHeight + 1
+  let payload = await {
+    bkh: blockHeight,
+    mkr: merkleRoot,
+    ebn: blockHeight + expirationBlock
+  };
+  return await jwt.sign(payload, process.env.SECRET, {
+    algorithm: 'HS256',
+    noTimestamp: true
+  });
 };
-
-await jwt.sign(payload, process.env.SECRET1, { algorithm: 'HS256', noTimestamp: true });

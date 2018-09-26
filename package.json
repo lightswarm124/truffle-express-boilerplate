@@ -6,6 +6,7 @@
   "scripts": {
     "start": "yarn build && node ./dist/index.js",
     "dev": "nodemon ./src/services/jwt.test.js",
+    "devbuild": "yarn build && node ./dist/services/jwt.test.js",
     "build": "babel ./src --out-dir ./dist --source-maps --copy-files",
     "lint": "eslint --fix ./src",
     "audit": "snyk test",
