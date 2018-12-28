@@ -4,8 +4,11 @@
   "main": "./src/server.js",
   "license": "MIT",
   "scripts": {
+    "dev": "nodemon --exec babel-node ./src/server.js",
     "start": "yarn build && node ./dist/server.js",
-    "build": "babel ./src --out-dir ./dist --source-maps --copy-files"
+    "build": "babel ./src --out-dir ./dist --source-maps --copy-files",
+    "audit": "synk test",
+    "test": "./node_modules/.bin/mocha --compilers js:@babel/register"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -18,8 +21,12 @@
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
     "@babel/plugin-transform-arrow-functions": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
-    "nodemon": "^1.18.9"
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9",
+    "supertest": "^3.3.0",
+    "synk": "^0.0.2"
   }
 }

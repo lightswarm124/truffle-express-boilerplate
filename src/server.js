@@ -7,6 +7,7 @@ import bodyParser  from 'body-parser';
 
 import middlewares  from './middlewares/middlewares';
 import wrap  from './middlewares/wrap';
+import routes from './routes';
 
 const app = express();
 
@@ -17,11 +18,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(helmet());
 
-app.get('/', wrap(async (req, res) => {
-    res.status(200).json({
-        data: "Hello"
-    });
-}));
+app.use('/', routes);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
@@ -30,4 +27,4 @@ app.listen(port, () => {
     console.log(`Listening: http://localhost:${port}`);
 });
 
-module.exports = app;
+export default app;
