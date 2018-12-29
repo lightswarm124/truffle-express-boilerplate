@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', wrap(async (req, res) => {
     res.status(200).json({
-        data: "Hello"
+        data: "Truffle Express Boilerplate"
     });
 }));
 
