@@ -1,9 +1,10 @@
 require('dotenv').config();
 import express from 'express';
+import bodyParser  from 'body-parser';
 import morgan  from 'morgan';
 import helmet  from 'helmet';
 import axios from 'axios';
-import bodyParser  from 'body-parser';
+import cors from 'cors';
 
 import middlewares  from './middlewares/middlewares';
 import wrap  from './middlewares/wrap';
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(helmet());
+app.use(cors());
 
 app.use('/', routes);
 
