@@ -19,7 +19,7 @@ describe('GET /', () => {
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200, {
-            data: 'Hello'
+            data: 'Truffle Express Boilerplate'
         }, done);
     });
 });
